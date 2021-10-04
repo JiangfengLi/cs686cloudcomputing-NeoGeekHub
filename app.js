@@ -9,6 +9,7 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const connectDB = require('./config/db')
+const PORT = process.env.PORT || 3000
 
 // Load config
 dotenv.config({ path: './config/config.env' })
@@ -94,8 +95,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/stories', require('./routes/stories'))
-
-const PORT = process.env.PORT || 3000
 
 app.listen(
   PORT,
